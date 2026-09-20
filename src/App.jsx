@@ -15,6 +15,7 @@ function AppContent() {
   const location = useLocation();
 
   const hideNavbar =
+    location.pathname === "/" ||
     location.pathname === "/signup" ||
     location.pathname === "/login";
 
@@ -27,10 +28,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Signup />} />
 
-        <Route
-          path="/home"
-          element={<Homepage />}
-        />
+        <Route path="/home" element={<Homepage />} />
 
         <Route
           path="/food"
