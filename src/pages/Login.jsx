@@ -34,7 +34,7 @@ function Login() {
       setMessage("Login successful!");
 
       setTimeout(() => {
-        navigate("/");
+       navigate("/home");
       }, 1000);
     }
   };

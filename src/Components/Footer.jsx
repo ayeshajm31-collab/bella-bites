@@ -36,7 +36,7 @@ const Footer = () => {
 
           <ul className="space-y-3 text-gray-400">
             <li className="hover:text-orange-500 cursor-pointer">
-              <Link to={'/'}>Home</Link>
+             <Link to={'/home'}>Home</Link>
             </li>
             <li className="hover:text-orange-500 cursor-pointer">
               <Link to={'/food'}>🍔 Food</Link>
