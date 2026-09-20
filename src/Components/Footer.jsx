@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
   return (
     <footer className="bg-slate-950 text-white px-8 py-12">
 
@@ -30,7 +39,7 @@ const Footer = () => {
               <Link to={'/'}>Home</Link>
             </li>
             <li className="hover:text-orange-500 cursor-pointer">
-               <Link to={'/food'}>🍔 Food</Link>
+              <Link to={'/food'}>🍔 Food</Link>
             </li>
             <li className="hover:text-orange-500 cursor-pointer">
               <Link to={'/contact'}> 📞 Contact</Link>
@@ -85,6 +94,13 @@ const Footer = () => {
         <p className="text-orange-500 text-sm mt-2">
           Made with ❤️ & good food 🍝
         </p>
+
+        <button
+          onClick={scrollToTop}
+  className="mt-5 bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+        >
+          ↑ Back to Top
+        </button>
 
       </div>
 

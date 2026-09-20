@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Footer from "../Components/Footer";
+import { toast } from "sonner";
 
 
-const Foodpage = ({cart,setCart}) => {
+const Foodpage = ({ cart, setCart }) => {
+
+  const [searchParams] = useSearchParams();
 
   const [foods, setFoods] = useState([]);
-  const [category, SetCategory] = useState('chicken');
-  
+
+  const [category, SetCategory] = useState(
+    searchParams.get("category") || "chicken"
+  );
 
   useEffect(() => {
    
@@ -47,24 +53,39 @@ const Foodpage = ({cart,setCart}) => {
 
             <h2 className="text-xl font-bold p-4">{food.strMeal}</h2>
 
-            <button onClick={() => {
-              const existingfood = cart.find((item) => item.idMeal === food.idMeal);
-              if(existingfood){
-                setCart(
-                  cart.map((item)=> item.idMeal === food.idMeal ? {...item , quantity:item.quantity + 1}
-                  :item 
-                   ) )
+           <button
+  onClick={() => {
+    const existingfood = cart.find(
+      (item) => item.idMeal === food.idMeal
+    );
 
-              } else{
-                setCart([...cart,{...food,quantity: 1, price :300 + (Number(food.idMeal)%7)*100}]);
+    if (existingfood) {
+      setCart(
+        cart.map((item) =>
+          item.idMeal === food.idMeal
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
 
-              }
-            }}
-  className="bg-amber-600 px-4 py-2 ml-20 mb-1 hover:bg-amber-500 rounded-lg text-white active:scale-95  transition"
-              >
-              Add to cart
-            </button>
+      toast.success("Added to cart successfully!");
+    } else {
+      setCart([
+        ...cart,
+        {
+          ...food,
+          quantity: 1,
+          price: 300 + (Number(food.idMeal) % 7) * 100,
+        },
+      ]);
 
+      toast.success("Added to cart successfully!");
+    }
+  }}
+  className="bg-amber-600 px-4 py-2 ml-20 mb-1 hover:bg-amber-500 rounded-lg text-white active:scale-95 transition"
+>
+  Add to cart
+</button>
           
 
           </div>

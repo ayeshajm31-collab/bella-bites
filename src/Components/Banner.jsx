@@ -3,7 +3,7 @@
 const Banner = () => {
   return (
     <div>
-      <img  className='w-full h-screen ' src="/delice.jpg" alt="Banner" />
+      <img  className='w-full h-screen ' src="/delice.png" alt="Banner" />
     </div>
   )
 }
